@@ -143,12 +143,15 @@ new Worker(
         to,
         subject,
         html: compiledTemplate(payload),
-        icalEvent: {
-          content: calendar,
-          method: "request",
-          filename: "invite.ics",
-        },
+        ...(calendar && {
+          icalEvent: {
+            content: calendar,
+            method: "request",
+            filename: "invite.ics",
+          },
+        }),
       }
+      
       const info = await transporter.sendMail(message);
 
       console.log(`Email sent to ${to}: ${info.messageId}`);
