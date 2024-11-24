@@ -151,8 +151,6 @@ new Worker(
           filename: "invite.ics",
         },
       }
-
-      // Send email
       const info = await transporter.sendMail(message);
 
       console.log(`Email sent to ${to}: ${info.messageId}`);
