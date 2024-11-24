@@ -142,14 +142,7 @@ new Worker(
         from: `"NUESA ABUAD" <hello@nuesaabuad.ng>`, // Sender address
         to,
         subject,
-        html: compiledTemplate(payload),
-        ...(calendar && {
-          icalEvent: {
-            content: calendar,
-            method: "request",
-            filename: "invite.ics",
-          },
-        }),
+        html: compiledTemplate(payload)
       }
       
       const info = await transporter.sendMail(message);
