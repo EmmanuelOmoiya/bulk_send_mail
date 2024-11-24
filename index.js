@@ -53,6 +53,7 @@ new Worker(
       const templateDir = path.join(process.cwd(), "./templates");
       const source = fs.readFileSync(path.join(templateDir, html), "utf-8");
       const compiledTemplate = handlebars.compile(String(source));
+      console.log(compiledTemplate)
 
       // Send email
       const info = await transporter.sendMail({
