@@ -135,21 +135,21 @@ new Worker(
         to,
         subject,
         // html: compiledTemplate(payload),
-        html: "Hello Chai",
-        icalEvent: {
-          content: createEvent({
-            start: [2024, 11, 24, 18, 0],
-            duration: { hours: 3, minutes: 0 },
-            title: "Salam Odo N'uwa - NUESA DINNER AND AWARDS NIGHT",
-            description: "",
-            location: "Alfa Belgore, Afe Babalola University Ado-Ekiti",
-            url: "https://dinner.nuesaabuad.ng/",
-            // geo: { lat: 7.6058402, lon: 5.3068889 },
-            organizer: { name: "NUESA ABUAD", email: "hello@nuesaabuad.ng" },
-          }),
-          method: "request",
-          filename: "invite.ics",
-        },
+        html: "Hello Chai"
+        // icalEvent: {
+        //   content: createEvent({
+        //     start: [2024, 11, 24, 18, 0],
+        //     duration: { hours: 3, minutes: 0 },
+        //     title: "Salam Odo N'uwa - NUESA DINNER AND AWARDS NIGHT",
+        //     description: "",
+        //     location: "Alfa Belgore, Afe Babalola University Ado-Ekiti",
+        //     url: "https://dinner.nuesaabuad.ng/",
+        //     // geo: { lat: 7.6058402, lon: 5.3068889 },
+        //     organizer: { name: "NUESA ABUAD", email: "hello@nuesaabuad.ng" },
+        //   }),
+        //   method: "request",
+        //   filename: "invite.ics",
+        // },
       }
       const info = await transporter.sendMail(message);
 
