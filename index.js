@@ -128,14 +128,13 @@ new Worker(
       const templateDir = path.join(process.cwd(), "./templates");
       const source = fs.readFileSync(path.join(templateDir, html), "utf-8");
       const compiledTemplate = handlebars.compile(String(source));
-    let mine = testHtml(payload.name, payload.previousReservedSeats, payload.currentReservedSeats)
+      let mine = testHtml(payload.name, payload.previousReservedSeats, payload.currentReservedSeats)
     // console.log(String(mine)
       let message = {
         from: `"NUESA ABUAD" <hello@nuesaabuad.ng>`, // Sender address
         to,
         subject,
-        // html: compiledTemplate(payload),
-        html: "Hello Chai"
+        html: compiledTemplate(payload),
         // icalEvent: {
         //   content: createEvent({
         //     start: [2024, 11, 24, 18, 0],
