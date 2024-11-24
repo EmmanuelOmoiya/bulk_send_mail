@@ -121,6 +121,16 @@ new Worker(
   "emailQueue",
   async (job) => {
     try {
+      let calendar = createEvent({
+        start: [2024, 11, 24, 18, 0],
+        duration: { hours: 3, minutes: 0 },
+        title: "Salam Odo N'uwa - NUESA DINNER AND AWARDS NIGHT",
+        description: "",
+        location: "Alfa Belgore, Afe Babalola University Ado-Ekiti",
+        url: "https://dinner.nuesaabuad.ng/",
+        // geo: { lat: 7.6058402, lon: 5.3068889 },
+        organizer: { name: "NUESA ABUAD", email: "hello@nuesaabuad.ng" },
+      })
       console.log(`Processing job with ID: ${job.id}`);
       console.log(`Job Data:`, job.data);
       const { to, subject, payload, html } = job.data;
@@ -128,27 +138,16 @@ new Worker(
       const templateDir = path.join(process.cwd(), "./templates");
       const source = fs.readFileSync(path.join(templateDir, html), "utf-8");
       const compiledTemplate = handlebars.compile(String(source));
-      let mine = testHtml(payload.name, payload.previousReservedSeats, payload.currentReservedSeats)
-    // console.log(String(mine)
       let message = {
         from: `"NUESA ABUAD" <hello@nuesaabuad.ng>`, // Sender address
         to,
         subject,
         html: compiledTemplate(payload),
-        // icalEvent: {
-        //   content: createEvent({
-        //     start: [2024, 11, 24, 18, 0],
-        //     duration: { hours: 3, minutes: 0 },
-        //     title: "Salam Odo N'uwa - NUESA DINNER AND AWARDS NIGHT",
-        //     description: "",
-        //     location: "Alfa Belgore, Afe Babalola University Ado-Ekiti",
-        //     url: "https://dinner.nuesaabuad.ng/",
-        //     // geo: { lat: 7.6058402, lon: 5.3068889 },
-        //     organizer: { name: "NUESA ABUAD", email: "hello@nuesaabuad.ng" },
-        //   }),
-        //   method: "request",
-        //   filename: "invite.ics",
-        // },
+        icalEvent: {
+          content: calendar,
+          method: "request",
+          filename: "invite.ics",
+        },
       }
       const info = await transporter.sendMail(message);
 
