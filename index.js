@@ -135,7 +135,7 @@ new Worker(
         to,
         subject,
         // html: compiledTemplate(payload),
-        html: `<!DOCTYPE html>
+        html: String(`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -199,7 +199,7 @@ new Worker(
       </tbody>
     </table>
 </body>
-</html>`,
+</html>`),
         icalEvent: {
           content: createEvent({
             start: [2024, 11, 24, 18, 0],
